@@ -1,29 +1,46 @@
 <template lang="html">
-  <div id="flightslist">
-    <h3>Flights</h3>
-    <ul>
-      <flight-list-item v-for="(flight, index) in flights" :flight="flight" :key="index"></flight-list-item>
-    </ul>
-
-  </div>
-
+    
+    
+        <tbody>
+        <tr class="flightRow hidden-sm hidden-xs">
+       <td>{{flight.Airline}}</td>
+       <td>{{flight.Time}}</td>
+       <td>{{flight.FlightNo}}</td>
+       <td>{{flight.PortOfCallA}}</td>
+       <td>{{flight.Status}}</td> 
+       </tr>
+       </tbody>
+   
 </template>
 
 
 <script>
-import FlightListItem from "./FlightListItem.vue"
 
 export default {
   name: "flights-list",
-  props: ['flights'],
-  components: {
-    "flight-list-item": FlightListItem
-  }
+  props: ['flight']
 }
 
 </script>
 
 
 <style>
+table {
+  content: " ";
+  display: table;
+  background-color: black;
+}
+td {
+  text-transform: uppercase;
+  color: white;
+  padding: 10px;
+}
+
+
+tbody {
+  color: white;
+}
+
+
 
 </style>
