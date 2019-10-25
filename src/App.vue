@@ -1,28 +1,29 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<template lang = "html">
+  <div>
+    <h1>Edinburgh Airport  - Flight Information</h1>
   </div>
+
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name: "app",
+  data() {
+    return {
+      flights: [],
+      selectedFlight: null
+    };
+  },
+  mounted() {
+    fetch('https://kabrudle.edinburghairport.com/api/flights/all')
+    .then(res => res.json())
+    .then(flights => this.flights = flights)
   }
 }
 </script>
 
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
