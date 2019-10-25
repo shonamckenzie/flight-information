@@ -1,5 +1,5 @@
 <template lang="html">
-
+  <li>{{flight.Airline}} {{flight.Time}} {{ flight.FlightNo}} {{flight.PortOfCallA}}  {{flight.Status}}</li>
 </template>
 
 
@@ -13,5 +13,7 @@ export default {
 
 
 <style>
-
+li {
+  list-style-type: none;
+}
 </style>
