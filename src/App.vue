@@ -1,62 +1,75 @@
 <template lang = "html">
   <div id="app">
-  <main>
-    <div>
-     <h1>Edinburgh Airport  - Flight Information</h1>
-     <table>
-         <thead>
-        <tr>
-         <th class="flightRow hidden-sm hidden-xs">Airline</th>
-         <th>Time</th>
-         <th>Flight</th>
-         <th>From/ To</th>
-         <th>Status</th>
-        </tr>
-        </thead>
-     <flights-list v-for="flight in flights" :flight="flight"></flights-list>
-      </table>
-    </div>
-  </main>
+    <main>
+      <div>
+      <h1>Edinburgh Airport  - Flight Information</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Airline</th>
+              <th>Time</th>
+              <th>Flight</th>
+              <th>From/ To</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <flights-list v-for="(flight, index) in flights" :flight="flight" :key="index" v-if="flight.ArrDep === 'A'"></flights-list>
+        </table>
+      </div>
+    </main>
   </div>
 </template>
 
-
 <script>
-import FlightsList from "./components/FlightsList.vue"
+import FlightsList from "./components/FlightsList.vue";
 
 export default {
   name: "app",
   data() {
     return {
       flights: [],
-      timer: ''
-    }
+      timer: ""
+    };
   },
   components: {
     "flights-list": FlightsList
   },
-  created () {
-        this.fetchData();
-        this.timer = setInterval(this.fetchData, 30000)
-    },
+  mounted() {
+    this.fetchFlights();
+  },
+  created() {
+    this.fetchFlights();
+    this.timer = setInterval(this.fetchFlights, 30000);
+  },
   methods: {
-    fetchData(){
-    fetch('https://kabrudle.edinburghairport.com/api/flights/all')
-    .then(res => res.json())
-    .then(flights => this.flights = flights)
+    fetchFlights() {
+      fetch("https://kabrudle.edinburghairport.com/api/flights/all")
+        .then(res => res.json())
+        .then(flights => (this.flights = flights));
+    }
   }
-}
-}
+};
 </script>
 
-
 <style>
-main{
+main {
   background-image: URL("https://s3-eu-west-1.amazonaws.com/edinburghairport/files/img/clouds.jpg") !important;
   background-repeat: repeat-x;
-  padding-top: 100px;
+  padding-top: 30px;
   font-family: Calibri, Arial;
   font-size: 15px;
+}
+
+h1{
+  text-align: center;
+}
+
+table {
+  content: " ";
+  display: table;
+  background-color: black;
+  border-collapse: collapse;
+  margin: 0 auto;
 }
 
 th {
@@ -66,4 +79,12 @@ th {
   text-align: left;
   font-size: 20px;
 }
+
+td {
+  text-transform: uppercase;
+  color: white;
+  padding: 10px;
+}
+
+
 </style>
