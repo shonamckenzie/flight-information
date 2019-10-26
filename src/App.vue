@@ -11,6 +11,7 @@
               <th>Flight</th>
               <th>From/ To</th>
               <th>Status</th>
+              <th>Info</th>
             </tr>
           </thead>
           <flights-list v-for="(flight, index) in flights" :flight="flight" :key="index" v-if="flight.ArrDep === 'A'"></flights-list>
