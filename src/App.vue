@@ -28,17 +28,24 @@ export default {
   name: "app",
   data() {
     return {
-      flights: []
-    };
+      flights: [],
+      timer: ''
+    }
   },
   components: {
     "flights-list": FlightsList
   },
-  mounted() {
+  created () {
+        this.fetchData();
+        this.timer = setInterval(this.fetchData, 30000)
+    },
+  methods: {
+    fetchData(){
     fetch('https://kabrudle.edinburghairport.com/api/flights/all')
     .then(res => res.json())
     .then(flights => this.flights = flights)
   }
+}
 }
 </script>
 

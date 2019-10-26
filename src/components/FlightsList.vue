@@ -1,6 +1,4 @@
 <template lang="html">
-    
-    
         <tbody>
         <tr class="flightRow hidden-sm hidden-xs">
        <td>{{flight.Airline}}</td>
@@ -8,6 +6,7 @@
        <td>{{flight.FlightNo}}</td>
        <td>{{flight.PortOfCallA}}</td>
        <td>{{flight.Status}}</td> 
+       <td>{{flight.ArrDep}}</td>
        </tr>
        </tbody>
    
