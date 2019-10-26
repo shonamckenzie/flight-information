@@ -1,30 +1,45 @@
 <template lang = "html">
   <div id="app">
     <main>
-      <div>
-      <h1>Edinburgh Airport  - Flight Information</h1>
-      <vue-tiny-tabs id="mytabs" :anchor="false" :closable="true" :hideTitle="false">
+      <div class="container">
+      <div class="column">
+      <h1>Edinburgh Airport  - Flight Arrivals</h1>
         <table>
           <thead>
             <tr>
               <th>Airline</th>
               <th>Time</th>
               <th>Flight</th>
-              <th>From/ To</th>
+              <th>From</th>
               <th>Status</th>
               <th>Info</th>
             </tr>
           </thead>
           <flights-list v-for="(flight, index) in flights" :flight="flight" :key="index" v-if="flight.ArrDep === 'A'"></flights-list>
         </table>
-        </vue-tiny-tabs>
+      </div>
+      <div class="column">
+      <h1>Edinburgh Airport  - Flight Departures</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Airline</th>
+              <th>Time</th>
+              <th>Flight</th>
+              <th>To</th>
+              <th>Status</th>
+              <th>Info</th>
+            </tr>
+          </thead>
+          <flights-list v-for="(flight, index) in flights" :flight="flight" :key="index" v-if="flight.ArrDep === 'D'"></flights-list>
+        </table>
+      </div>
       </div>
     </main>
   </div>
 </template>
 
 <script>
-import VueTinyTabs from 'vue-tiny-tabs'
 import FlightsList from "./components/FlightsList.vue";
 
 export default {
@@ -36,8 +51,7 @@ export default {
     };
   },
   components: {
-    "flights-list": FlightsList,
-    "vue-tiny-tabs": VueTinyTabs
+    "flights-list": FlightsList
   },
   mounted() {
     this.fetchFlights();
@@ -65,16 +79,29 @@ main {
   font-size: 15px;
 }
 
-h1{
-  text-align: center;
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.container:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 table {
-  content: " ";
-  display: table;
+  /* width: 100px; */
+  /* content: " ";
+  display: table; */
   background-color: black;
   border-collapse: collapse;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+}
+
+h1 {
+  padding-left: 200px;
 }
 
 th {

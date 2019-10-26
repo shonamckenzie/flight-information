@@ -7,7 +7,6 @@
      <td>{{flight.PortOfCallA}}</td>
      <td>{{flight.Status}}</td> 
      <td>{{flight.Additional}}</td>
-     <td>{{flight.ArrDep}}</td>
     </tr>
   </tbody> 
 </template>
