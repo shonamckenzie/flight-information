@@ -3,6 +3,7 @@
     <main>
       <div>
       <h1>Edinburgh Airport  - Flight Information</h1>
+      <vue-tiny-tabs id="mytabs" :anchor="false" :closable="true" :hideTitle="false">
         <table>
           <thead>
             <tr>
@@ -16,12 +17,14 @@
           </thead>
           <flights-list v-for="(flight, index) in flights" :flight="flight" :key="index" v-if="flight.ArrDep === 'A'"></flights-list>
         </table>
+        </vue-tiny-tabs>
       </div>
     </main>
   </div>
 </template>
 
 <script>
+import VueTinyTabs from 'vue-tiny-tabs'
 import FlightsList from "./components/FlightsList.vue";
 
 export default {
@@ -33,7 +36,8 @@ export default {
     };
   },
   components: {
-    "flights-list": FlightsList
+    "flights-list": FlightsList,
+    "vue-tiny-tabs": VueTinyTabs
   },
   mounted() {
     this.fetchFlights();
