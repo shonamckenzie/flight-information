@@ -4,6 +4,8 @@
 
 ![flight info screen](https://user-images.githubusercontent.com/39915585/67638310-fea07b80-f8da-11e9-8dd1-c220665a5faa.png)
 
+The data was gathered using the [Edinburgh Airport Api](https://kabrudle.edinburghairport.com/api/flights/all)
+
 
 ## Project setup
 ```
