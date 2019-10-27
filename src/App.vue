@@ -1,6 +1,6 @@
 <template lang = "html">
     <main>
-      <div class="container">
+      <div class="flex-container">
       <div class="column">
       <h1>Flight Arrivals</h1>
       <!-- <img class="imgarr" alt="Arrivals" src="https://s3-eu-west-1.amazonaws.com/edinburghairport/files/img/flights/w_arrivals.png"> -->
@@ -90,10 +90,10 @@ main {
   font-size: 15px;
 }
 
-.container {
-    content: "";
-    display: table;
-    padding-left: 30px;
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
 }
 @media (min-width: 768px){
 .column {
@@ -101,9 +101,8 @@ main {
   width: 50%;
   position: relative;
   min-height: 1px;
-  /* padding-left: 15px;
-  padding-right:15px; */
-}}
+}
+}
 
 table {
   background-color: black;
@@ -112,7 +111,7 @@ table {
 }
 
 h1 {
-  padding-left: 200px;
+  text-align:  center;
 }
 
 th {
