@@ -1,10 +1,11 @@
 <template lang = "html">
-  <div id="app">
     <main>
       <div class="container">
       <div class="column">
-      <h1>Edinburgh Airport  - Flight Arrivals</h1>
+      <h1>Flight Arrivals</h1>
+      <!-- <img class="imgarr" alt="Arrivals" src="https://s3-eu-west-1.amazonaws.com/edinburghairport/files/img/flights/w_arrivals.png"> -->
         <table>
+          <tbody>
           <thead>
             <tr>
               <th>Airline</th>
@@ -16,11 +17,14 @@
             </tr>
           </thead>
           <flights-list v-for="(flight, index) in flights" :flight="flight" :key="index" v-if="flight.ArrDep === 'A'"></flights-list>
+          </tbody>
         </table>
       </div>
       <div class="column">
-      <h1>Edinburgh Airport  - Flight Departures</h1>
+      <h1>Flight Departures</h1>
+      <!-- <img class="imgdep" alt="Departures" src="https://s3-eu-west-1.amazonaws.com/edinburghairport/files/img/flights/w_departures.png"> -->
         <table>
+          <tbody>
           <thead>
             <tr>
               <th>Airline</th>
@@ -32,11 +36,11 @@
             </tr>
           </thead>
           <flights-list v-for="(flight, index) in flights" :flight="flight" :key="index" v-if="flight.ArrDep === 'D'"></flights-list>
+          </tbody>
         </table>
       </div>
       </div>
     </main>
-  </div>
 </template>
 
 <script>
@@ -71,33 +75,40 @@ export default {
 </script>
 
 <style>
+/* @media only screen and (max-width: 768px), (min-device-width: 768px) and (max-device-width: 1024px){
+  table{
+    font-size: 12px;
+  }
+} */
+
 main {
-  background-image: URL("https://s3-eu-west-1.amazonaws.com/edinburghairport/files/img/clouds.jpg") !important;
-  background-repeat: repeat-x;
+  background-image: URL("https://s3-eu-west-1.amazonaws.com/edinburghairport/files/img/clouds.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
   padding-top: 30px;
   font-family: Calibri, Arial;
   font-size: 15px;
 }
 
-.column {
-    float: left;
-    width: 50%;
-}
-
-/* Clear floats after the columns */
-.container:after {
+.container {
     content: "";
     display: table;
-    clear: both;
+    padding-left: 30px;
 }
+@media (min-width: 768px){
+.column {
+  float: left;
+  width: 50%;
+  position: relative;
+  min-height: 1px;
+  /* padding-left: 15px;
+  padding-right:15px; */
+}}
 
 table {
-  /* width: 100px; */
-  /* content: " ";
-  display: table; */
   background-color: black;
   border-collapse: collapse;
-  /* margin: 0 auto; */
+  line-height: 1.42857;
 }
 
 h1 {
@@ -117,6 +128,5 @@ td {
   color: white;
   padding: 10px;
 }
-
 
 </style>
