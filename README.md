@@ -1,5 +1,10 @@
 # flight_information
 
+
+
+![flight info screen](https://user-images.githubusercontent.com/39915585/67638310-fea07b80-f8da-11e9-8dd1-c220665a5faa.png)
+
+
 ## Project setup
 ```
 npm install
